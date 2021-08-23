@@ -24,7 +24,7 @@
           <a-input v-decorator="decorators.name" :placeholder="$t('network.text_684')" />
         </a-form-item>
         <a-form-item v-if="!isGoogle || cloudEnv !== 'public'" :label="$t('network.text_244')" v-bind="formItemLayout" :extra="cloudEnv !== 'onpremise' ? $t('network.text_685') : $t('network.text_686')">
-          <a-input v-decorator="decorators.cidr_block" :placeholder="$t('network.text_687')" v-if="cloudEnv !== 'onpremise'" />
+          <a-input v-decorator="decorators.cidr_block" :placeholder="$t('network.text_687')" v-if="cloudEnv !== 'onpremise' && !isCloudpods" />
           <a-select v-decorator="decorators.cidr_block" v-else>
             <a-select-option value="192.168.0.0/16">192.168.0.0/16</a-select-option>
             <a-select-option value="172.16.0.0/12">172.16.0.0/12</a-select-option>
@@ -227,6 +227,12 @@ export default {
     isHuaweiCloudStack () {
       if (this.currentCloudregion) {
         return this.currentCloudregion.provider === HYPERVISORS_MAP.huaweicloudstack.provider
+      }
+      return false
+    },
+    isCloudpods () {
+      if (this.currentCloudregion) {
+        return this.currentCloudregion.provider === HYPERVISORS_MAP.cloudpods.provider
       }
       return false
     },

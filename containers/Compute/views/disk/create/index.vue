@@ -386,7 +386,7 @@ export default {
                 multiple: backends.length > 1,
               }
             })
-            if (this.diskType === 'onpremise') {
+            if (this.diskType === 'onpremise' || provider === 'cloudpods') {
               this.storageOpts = this.storageOpts.filter((item) => {
                 return !item.value.includes('local')
               })
