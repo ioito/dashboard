@@ -489,6 +489,7 @@ export default {
 .current-view-label {
   max-width: 150px;
 }
+
 .view-list-wrap {
   max-width: 200px;
   margin: 0;
